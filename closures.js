@@ -53,7 +53,7 @@ in your console. */
 
   var makeCall = callFriend();
 
-  makeCall(435-215-9248);
+  makeCall('435-215-9248');
 
 
 
@@ -111,14 +111,12 @@ the module pattern to achieve this. */
 function counterFactory(value) {
 
   // Code here.
-  var answer = value;
-
   return {
     inc: function(){
-      return ++answer;
+      return ++value;
     },
     dec: function(){
-      return --answer;
+      return --value;
     }
   }
 }
