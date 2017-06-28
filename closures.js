@@ -1,6 +1,6 @@
-/******************************************************************************\
-	#PROBLEM-01
-\******************************************************************************/
+// /******************************************************************************\
+// 	#PROBLEM-01
+// \******************************************************************************/
 
 function outer() {
   var name = 'Tyler';
@@ -9,17 +9,17 @@ function outer() {
   }
 }
 
-/****** INSTRUCTIONS PROBLEM 1 ******/
-/* Above you're given a function that returns another function which has a
-closure over the name variable. Invoke outer saving the return value into
-another variable called 'inner'. */
+// /****** INSTRUCTIONS PROBLEM 1 ******/
+// /* Above you're given a function that returns another function which has a
+// closure over the name variable. Invoke outer saving the return value into
+// another variable called 'inner'. */
 
-// Code Here
+// // Code Here
 var inner = outer();
 
-//Once you do that, invoke inner.
+// //Once you do that, invoke inner.
 
-//Code Here
+// //Code Here
 inner();
 
 
@@ -31,9 +31,9 @@ inner();
 
 
 
-/******************************************************************************\
-	#PROBLEM-02
-\******************************************************************************/
+// /******************************************************************************\
+// 	#PROBLEM-02
+// \******************************************************************************/
 
 
 function callFriend(name) {
@@ -43,21 +43,16 @@ function callFriend(name) {
   return dial
 }
 
-/****** INSTRUCTIONS PROBLEM 2 ******/
-/* Above you're given a callFriend function that returns the dial function.
-Create a callJake function that when invoked with '435-555-9248' returns 'Calling Jake at 435-555-9248'
-in your console. */
+// /****** INSTRUCTIONS PROBLEM 2 ******/
+// /* Above you're given a callFriend function that returns the dial function.
+// Create a callJake function that when invoked with '435-555-9248' returns 'Calling Jake at 435-555-9248'
+// in your console. */
 
-  //Code Here
+//   //Code Here
 
-  var makeCall = callFriend();
+  var callJake = callFriend('Jake');
 
-  makeCall('435-215-9248');
-
-
-
-
-
+  callJake('435-215-9248');
 
 
 
@@ -79,20 +74,12 @@ function makeCounter(){
   }
 }
 
-//Uncomment this once you make your function
+// //Uncomment this once you make your function
   var count = makeCounter();
   count(); // 1
   count(); // 2
   count(); // 3
   count(); // 4
-
-
-
-
-
-
-
-
 
 
 /******************************************************************************\
@@ -123,16 +110,12 @@ function counterFactory(value) {
 }
 
 
-counter = counterFactory(10);
-<<<<<<< HEAD
-counter.inc();
-counter.dec();
-=======
+var counter = counterFactory(10);
+
 // counter.inc() // 11
 // counter.inc() // 12
 // counter.inc() // 13
 // counter.dec() // 12
->>>>>>> e96a20cb5c6b9c9977a15c759e302b31ab28e1f8
 
 
 
@@ -187,7 +170,6 @@ invokes privateMethod. Invoke this by calling module.publicMethod(); outside
 the module scope */
 
 var module = (function() {
-<<<<<<< HEAD
  var person = {
    name: "phillip",
    age: 29,
@@ -211,26 +193,6 @@ var module = (function() {
 
 // Uncomment this after you create your public method
  module.publicMethod();
-=======
-  var person = {
-    name: "phillip",
-    age: 29,
-    location: "Utah"
-  };
-
-  function privateMethod(){
-    return "Hi, I'm " + person.name + ", age " + person.age + " from " + person.location;
-  }
-
-  // Anything that is being returned is made public and can be invoked from
-  // outside our lexical scope
-  return {
-    // Code here.
-  };
-
-})();
-
->>>>>>> e96a20cb5c6b9c9977a15c759e302b31ab28e1f8
 
 
 /******************************************************************************\
@@ -246,7 +208,12 @@ var secondLevelFriends = ["Anne", "Harry", "Quinton"];
 var allUsers = ["Tom", "Dick", "Harry", "Anne", "Quinton", "Katie", "Mary"];
 
 function findPotentialFriends(existingFriends) {
-
+  return function(user){
+    if(existingFriends.indexOf(user) === -1){
+      return true;
+    }
+    return false;
+  }
 }
 
 var isNotAFriend = findPotentialFriends( friends );
@@ -254,48 +221,52 @@ var isNotAFriend = findPotentialFriends( friends );
 // isNotAFriend(secondLevelFriends[2]); // true
 
 
-/******************************************************************************\
- #PROBLEM-07 -- BLACK DIAMOND
- \******************************************************************************/
-/* Using your findPotentialFriends function from above and the Array.filter
-method, find all potential second level friends as well as potential friends
-from allUsers. */
+// /******************************************************************************\
+//  #PROBLEM-07 -- BLACK DIAMOND
+//  \******************************************************************************/
+// /* Using your findPotentialFriends function from above and the Array.filter
+// method, find all potential second level friends as well as potential friends
+// from allUsers. */
 
-var potentialSecondLevelFriends = "?";
-var allPotentialFriends = "?";
+var potentialSecondLevelFriends = secondLevelFriends.filter(findPotentialFriends(friends));
+var allPotentialFriends = allUsers.filter(findPotentialFriends(friends))
 
 
-/******************************************************************************\
-	#PROBLEM-08
-\******************************************************************************/
+// /******************************************************************************\
+// 	#PROBLEM-08
+// \******************************************************************************/
 
-/****** INSTRUCTIONS PROBLEM 8 ******/
-/* Here we have a for loop that will iterate as long as i is less than or equal
-to 5. What we need to do is console.log(i) so that it logs like so:
- 0 second after call - log 0
- 1 seconds after call - log 1
- 2 seconds after call - log 2
- 3 seconds after call - log 3
- 4 seconds after call - log 4
- 5 seconds after call - log 5
- However, because each call to console.log occurs after the loop has finished,
- the value of i has changed before the console.log executes. We'll need to use
- a closure to preserve a reference to i at the time of execution.
+// /****** INSTRUCTIONS PROBLEM 8 ******/
+// /* Here we have a for loop that will iterate as long as i is less than or equal
+// to 5. What we need to do is console.log(i) so that it logs like so:
+//  0 second after call - log 0
+//  1 seconds after call - log 1
+//  2 seconds after call - log 2
+//  3 seconds after call - log 3
+//  4 seconds after call - log 4
+//  5 seconds after call - log 5
+//  However, because each call to console.log occurs after the loop has finished,
+//  the value of i has changed before the console.log executes. We'll need to use
+//  a closure to preserve a reference to i at the time of execution.
 
- Fix the code below to log the desired output.
- */
+//  Fix the code below to log the desired output.
+//  */
 
 function timeOutCounter() {
+
+  var cb = function(i) {
+      return function(){
+        console.log(i);
+    }
+  }
+  function newScope(i) {
+     setTimeout(cb(i), i * 1000)
+  }
+
   for (var i = 0; i <= 5; i++) {
-<<<<<<< HEAD
     newScope(i)
   }
 
-  function newScope(i) {
-     setTimeout(function() {
-      console.log(i);
-    }, i * 1000)
-  }
 }
 timeOutCounter();
 
@@ -304,48 +275,3 @@ timeOutCounter();
 
 
 
-/******************************************************************************\
-	#PROBLEM-08
-\******************************************************************************/
-
-var funcArray = [
-  function index0(){
-    return 0;
-  },
-  function index1(){
-    return 1;
-  },
-  function index2(){
-    return 2;
-  },
-  function index3(){
-    return 3;
-  },
-  function index4(){
-    return 4;
-  },
-  function index5(){
-    return 5;
-  },
-];
-
-
-  //Make the following code work
-
-  funcArray[0]() //0
-  funcArray[1]() //1
-  funcArray[2]() //2
-  funcArray[3]() //3
-  funcArray[4]() //4
-  funcArray[5]() //5
-
-//Hint: Don't let this fool you. Break down what's really happening here.
-
-=======
-    setTimeout(function() {
-    	console.log(i)
-	}, i * 1000)
-  }
-}
-timeOutCounter();
->>>>>>> e96a20cb5c6b9c9977a15c759e302b31ab28e1f8
