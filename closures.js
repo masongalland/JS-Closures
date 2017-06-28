@@ -221,7 +221,7 @@ var isNotAFriend = findPotentialFriends( friends );
 // isNotAFriend(secondLevelFriends[2]); // true
 
 
-// /******************************************************************************\
+// /*************************************************************************\
 //  #PROBLEM-07 -- BLACK DIAMOND
 //  \******************************************************************************/
 // /* Using your findPotentialFriends function from above and the Array.filter
